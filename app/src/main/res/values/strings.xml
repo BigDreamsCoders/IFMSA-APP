@@ -9,4 +9,9 @@
     <string name="developers_menu">Developers</string>
     <string name="shared_preferences_key_token">token</string>
     <string name="logo_ifmsa_description">Logo IFMSA</string>
+    <string name="committee_photo_description">Committee photo</string>
+    <string name="take_part_button">Take part</string>
+    <string name="dismiss_button">Dismiss</string>
+    <string name="hour_placeholder">Hour</string>
+    <string name="date_placeholder">Date</string>
 </resources>
