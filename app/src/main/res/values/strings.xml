@@ -7,4 +7,6 @@
     <string name="request_project_menu">Request Project</string>
     <string name="configuration_menu">Configuration</string>
     <string name="developers_menu">Developers</string>
+    <string name="shared_preferences_key_token">token</string>
+    <string name="logo_ifmsa_description">Logo IFMSA</string>
 </resources>
