@@ -32,6 +32,9 @@ public abstract class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapt
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Project aux=projects.get(position);
+        holder.project=aux;
+        holder.id=aux.getId();
+        holder.take_part=aux.getTook_part();
         holder.place.setText(aux.getPlace());
         holder.date.setText(aux.getDate());
         holder.hour.setText(aux.getHour());
@@ -58,11 +61,14 @@ public abstract class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapt
         @BindView(R.id.text_view_project_name_cardview) TextView name;
         @BindView(R.id.image_view_project_photo_cardview) ImageView photo;
         @BindView(R.id.button_take_part_cardview) Button takePart;
+        private String id;
+        private int take_part;
+        private Project project;
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(view->onCardViewClick());
-            takePart.setOnClickListener(view->onButtonClick());
+            itemView.setOnClickListener(view->onCardViewClick(project));
+            takePart.setOnClickListener(view->onButtonClick(id,take_part));
         }
     }
 
@@ -70,10 +76,11 @@ public abstract class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapt
     /**
      * method to set onclick listener to the whole {@link android.support.v7.widget.CardView}
      */
-    public abstract void onCardViewClick();
+    public abstract void onCardViewClick(Project project);
 
     /**
      * method to set onclick listener to the {@link Button} in the {@link android.support.v7.widget.CardView}
+     * @param id id of the project
      */
-    public abstract void onButtonClick();
+    public abstract void onButtonClick(String id, int take_part);
 }
