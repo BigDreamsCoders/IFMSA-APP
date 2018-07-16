@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">IFMSA El Salvador</string>
+    <string name="user_photo_description">User Photo</string>
+    <string name="profile_menu">Profile</string>
+    <string name="committees_menu">Committees</string>
+    <string name="projects_menu">Projects</string>
+    <string name="request_project_menu">Request Project</string>
+    <string name="configuration_menu">Configuration</string>
+    <string name="developers_menu">Developers</string>
 </resources>

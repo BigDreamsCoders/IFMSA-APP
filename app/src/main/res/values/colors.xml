@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#283593</color>
+    <color name="colorPrimaryDark">#1A237E</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="app_color">#2196F3</color>
+
+    <color name="black">#000000</color>
+
+    <color name="indigo_50">#E8EAF6</color>
+    <color name="indigo_100">#C5CAE9</color>
+    <color name="indigo_200">#9FA8DA</color>
+    <color name="A_100">#8C9EFF</color>
+
+    <color name="white">#FFFFFF</color>
+
+
+    <color name="A_200">#536DFE</color>
+    <color name="A_400">#3D5AFE</color>
+    <color name="A_700">#304FFE</color>
+    <color name="indigo_300">#7986CB</color>
+    <color name="indigo_400">#5C6BC0</color>
+    <color name="indigo_500">#3F51B5</color>
+    <color name="indigo_600">#3949AB</color>
+    <color name="indigo_700">#303F9F</color>
+    <color name="color_logo_800">#283593</color>
+    <color name="indigo_900">#1A237E</color>
+
 </resources>
