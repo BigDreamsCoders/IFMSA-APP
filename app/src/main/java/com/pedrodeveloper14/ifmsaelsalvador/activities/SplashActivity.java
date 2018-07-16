@@ -20,6 +20,9 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(this::startActivity, SPLASH_DURATION);
     }
 
+    /**
+     * Method that starts an activity, depending if there is an token or not
+    */
     private void startActivity(){
         Intent intent;
         if(getLocalToken().equals("")){
@@ -30,6 +33,10 @@ public class SplashActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * @return returns the currently saved token
+     *  Method that gets a local token
+    */
     private String getLocalToken(){
         SharedPreferences preferences=
                 getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
