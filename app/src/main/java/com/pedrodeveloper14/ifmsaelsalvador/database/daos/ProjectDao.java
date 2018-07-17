@@ -44,6 +44,13 @@ public interface ProjectDao {
     LiveData<List<Project>> getProjectsByCommittee(String committee);
 
     /**
+     * Method that return the current user projects
+     * @return return the list of current user projects
+     */
+    @Query("SELECT*FROM Project WHERE took_part=1")
+    LiveData<List<Project>> getCurrentUserProjects();
+
+    /**
      * Method to delete the project table
      */
     @Query("DELETE FROM Project")

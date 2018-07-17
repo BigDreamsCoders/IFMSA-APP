@@ -6,8 +6,10 @@ import android.arch.lifecycle.LiveData;
 import com.pedrodeveloper14.ifmsaelsalvador.database.AppDB;
 import com.pedrodeveloper14.ifmsaelsalvador.database.daos.CommitteeDao;
 import com.pedrodeveloper14.ifmsaelsalvador.database.daos.ProjectDao;
+import com.pedrodeveloper14.ifmsaelsalvador.database.daos.UserDao;
 import com.pedrodeveloper14.ifmsaelsalvador.database.models.Committee;
 import com.pedrodeveloper14.ifmsaelsalvador.database.models.Project;
+import com.pedrodeveloper14.ifmsaelsalvador.database.models.User;
 
 import java.util.List;
 
@@ -15,11 +17,13 @@ public class Repository {
 
     private ProjectDao mProjectDao;
     private CommitteeDao mCommitteeDao;
+    private UserDao mUserDao;
 
     public Repository(Application application) {
         AppDB db=AppDB.getInstance(application);
         this.mProjectDao = db.projectDao();
         this.mCommitteeDao=db.committeeDao();
+        this.mUserDao=db.userDao();
     }
 
     //Projects things
@@ -36,6 +40,7 @@ public class Repository {
     public LiveData<List<Project>> getProjectsByCommittee(String committee){
         return mProjectDao.getProjectsByCommittee(committee);
     }
+    public LiveData<List<Project>> getCurrentUserProjects(){return mProjectDao.getCurrentUserProjects();}
     public void deleteProjects(){
         mProjectDao.nuke();
     }
@@ -47,4 +52,9 @@ public class Repository {
         return mCommitteeDao.getAllCommittees();
     }
     public void deleteCommittees(){mCommitteeDao.nuke();}
+
+    //User things
+    public void insertUser(User user){mUserDao.insertUser(user);}
+    public LiveData<User> getCurrentUser(){return mUserDao.getCurrentUser();}
+    public void deleteUser(){mUserDao.nuke();}
 }

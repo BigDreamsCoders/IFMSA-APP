@@ -14,4 +14,5 @@
     <string name="dismiss_button">Dismiss</string>
     <string name="hour_placeholder">Hour</string>
     <string name="date_placeholder">Date</string>
+    <string name="banner_description">Banner</string>
 </resources>

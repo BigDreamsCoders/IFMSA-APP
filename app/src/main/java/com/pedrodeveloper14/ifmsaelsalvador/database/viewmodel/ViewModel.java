@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 
 import com.pedrodeveloper14.ifmsaelsalvador.database.models.Committee;
 import com.pedrodeveloper14.ifmsaelsalvador.database.models.Project;
+import com.pedrodeveloper14.ifmsaelsalvador.database.models.User;
 import com.pedrodeveloper14.ifmsaelsalvador.database.repository.Repository;
 
 import java.util.List;
@@ -71,6 +72,8 @@ public class ViewModel extends AndroidViewModel{
         return repository.getProjectsByCommittee(committee);
     }
 
+    public LiveData<List<Project>> getCurrentUserProjects(){return repository.getCurrentUserProjects();}
+
     public void deleteProjectTable(){
         new DeleteProjectTable(repository).execute();
     }
@@ -125,6 +128,43 @@ public class ViewModel extends AndroidViewModel{
         @Override
         protected Void doInBackground(Void... voids) {
             repository.deleteCommittees();
+            return null;
+        }
+    }
+
+    //User things
+    public void insertUser(User user){new InsertUser(repository, user).execute();}
+    public static class InsertUser extends AsyncTask<Void, Void, Void>{
+
+        private Repository repository;
+        private User user;
+
+        public InsertUser(Repository repository, User user) {
+            this.repository = repository;
+            this.user = user;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            repository.insertUser(user);
+            return null;
+        }
+    }
+
+    public LiveData<User> getCurrentUser(){return repository.getCurrentUser();}
+
+    public void deleteUser(){new DeleteUserTable(repository).execute();}
+    public static class DeleteUserTable extends AsyncTask<Void, Void, Void>{
+
+        private Repository repository;
+
+        public DeleteUserTable(Repository repository) {
+            this.repository = repository;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            repository.deleteUser();
             return null;
         }
     }

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image_view_profile_banner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_180dp"
+            android:contentDescription="@string/banner_description"
+            android:scaleType="centerCrop"
+            android:src="@color/indigo_300" />
+
+        <ImageButton
+            android:id="@+id/image_button_profile_picture"
+            android:layout_width="@dimen/_120dp"
+            android:layout_height="@dimen/_120dp"
+            android:layout_below="@id/image_view_profile_banner"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_minus60dp"
+            android:contentDescription="@string/user_photo_description"
+            android:elevation="@dimen/_5dp"
+            android:padding="@dimen/_20dp"
+            android:scaleType="centerCrop"
+            tools:targetApi="lollipop" />
+
+        <RelativeLayout
+            android:id="@+id/relative_layout_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image_button_profile_picture"
+            android:layout_marginEnd="@dimen/_15dp"
+            android:layout_marginStart="@dimen/_15dp"
+            android:elevation="@dimen/_4dp"
+            android:paddingBottom="@dimen/_18dp"
+            tools:targetApi="lollipop">
+
+            <TextView
+                android:id="@+id/text_view_profile_full_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_4dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:gravity="center"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_view_profile_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_view_profile_full_name"
+                android:layout_marginBottom="@dimen/_4dp"
+                android:layout_marginTop="@dimen/_4dp"
+                android:gravity="center"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_view_profile_university"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_view_profile_email"
+                android:layout_marginBottom="@dimen/_4dp"
+                android:layout_marginTop="@dimen/_4dp"
+                android:gravity="center"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textview_año_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_view_profile_university"
+                android:layout_marginBottom="@dimen/_4dp"
+                android:layout_marginTop="@dimen/_4dp"
+                android:gravity="center"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/effect"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_14dp"
+            android:layout_below="@id/relative_layout_profile"
+            android:background="@color/indigo_200"
+            android:elevation="@dimen/_5dp"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/effect"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_profile_projects"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

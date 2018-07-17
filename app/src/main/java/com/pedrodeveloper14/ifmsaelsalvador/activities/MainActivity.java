@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 
 import com.pedrodeveloper14.ifmsaelsalvador.R;
+import com.pedrodeveloper14.ifmsaelsalvador.fragments.ProfileFragment;
 import com.pedrodeveloper14.ifmsaelsalvador.fragments.ProjectsFragment;
 
 import butterknife.BindView;
@@ -55,10 +56,13 @@ public class MainActivity extends AppCompatActivity {
             String title = "";
             Fragment fragment;
             switch (itemID) {
-                default:
+                case R.id.projects_menu:
                     fragment = new ProjectsFragment();
                     title = ((ProjectsFragment) fragment).getTitle();
                     break;
+                default: /*R.id.profile_menu:*/
+                    fragment=new ProfileFragment();
+                    title=((ProfileFragment)fragment).getTitle();
             }
             setFragment(fragment, title);
             drawerLayout.closeDrawer(GravityCompat.START);
