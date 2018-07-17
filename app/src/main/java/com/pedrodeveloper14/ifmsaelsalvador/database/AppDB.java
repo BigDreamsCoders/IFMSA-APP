@@ -5,10 +5,12 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
+import com.pedrodeveloper14.ifmsaelsalvador.database.daos.CommitteeDao;
 import com.pedrodeveloper14.ifmsaelsalvador.database.daos.ProjectDao;
+import com.pedrodeveloper14.ifmsaelsalvador.database.models.Committee;
 import com.pedrodeveloper14.ifmsaelsalvador.database.models.Project;
 
-@Database(entities = {Project.class}, version = 1, exportSchema = false)
+@Database(entities = {Project.class, Committee.class}, version = 1, exportSchema = false)
 public abstract class AppDB extends RoomDatabase {
 
     private static volatile AppDB instance;
@@ -23,5 +25,6 @@ public abstract class AppDB extends RoomDatabase {
     }
 
     public abstract ProjectDao projectDao();
+    public abstract CommitteeDao committeeDao();
 
 }

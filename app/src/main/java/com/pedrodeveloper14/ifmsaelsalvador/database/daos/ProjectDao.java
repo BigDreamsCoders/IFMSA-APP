@@ -23,7 +23,7 @@ public interface ProjectDao {
     void insertProject(Project project);
 
     /**
-     * Method to update the state of assistance
+     * Method to updateProject the state of assistance
      * @param id id to be searched
      */
     @Query("UPDATE Project SET took_part=:take_apart WHERE id= :id")

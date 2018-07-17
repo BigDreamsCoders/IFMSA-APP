@@ -6,6 +6,7 @@ import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
+import com.pedrodeveloper14.ifmsaelsalvador.database.models.Committee;
 import com.pedrodeveloper14.ifmsaelsalvador.database.models.Project;
 import com.pedrodeveloper14.ifmsaelsalvador.database.repository.Repository;
 
@@ -22,19 +23,21 @@ public class ViewModel extends AndroidViewModel{
 
     //Project things
     public void insertProject(Project project){
-        new InsertProject(repository).execute(project);
+        new InsertProject(repository, project).execute();
     }
-    public static class InsertProject extends AsyncTask<Project, Void, Void>{
+    public static class InsertProject extends AsyncTask<Void, Void, Void>{
 
         private Repository repository;
+        private Project project;
 
-        public InsertProject(Repository repository) {
+        public InsertProject(Repository repository, Project project) {
             this.repository = repository;
+            this.project = project;
         }
 
         @Override
-        protected Void doInBackground(Project... projects) {
-            repository.insertProject(projects[0]);
+        protected Void doInBackground(Void... voids) {
+            repository.insertProject(project);
             return null;
         }
     }
@@ -55,7 +58,7 @@ public class ViewModel extends AndroidViewModel{
 
         @Override
         protected Void doInBackground(Void... voids) {
-            repository.update(id, take_apart);
+            repository.updateProject(id, take_apart);
             return null;
         }
     }
@@ -82,6 +85,46 @@ public class ViewModel extends AndroidViewModel{
         @Override
         protected Void doInBackground(Void... voids) {
             repository.deleteProjects();
+            return null;
+        }
+    }
+
+    //Committees things
+    public void insertCommittee(Committee committee){
+        new InsertCommittee(repository, committee).execute();
+    }
+    public static class InsertCommittee extends AsyncTask<Void, Void, Void>{
+        private Repository repository;
+        private Committee committee;
+
+        public InsertCommittee(Repository repository, Committee committee) {
+            this.repository = repository;
+            this.committee = committee;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            repository.insertCommittee(committee);
+            return null;
+        }
+    }
+
+    public LiveData<List<Committee>> getAllCommittees(){
+        return repository.getAllCommittees();
+    }
+
+    public void deleteCommitteeTable(){new DeleteProjectTable(repository).execute();}
+    public static class DeleteCommitteeTable extends AsyncTask<Void, Void, Void>{
+
+        private Repository repository;
+
+        public DeleteCommitteeTable(Repository repository) {
+            this.repository = repository;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            repository.deleteCommittees();
             return null;
         }
     }
