@@ -15,4 +15,13 @@
     <string name="hour_placeholder">Hour</string>
     <string name="date_placeholder">Date</string>
     <string name="banner_description">Banner</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="ifmsa_logo_description">IFMSA logo</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button">Login</string>
+    <string name="register_here_button">Register here</string>
+    <string name="user_icon_description">User icon</string>
+    <string name="password_icon_description">Password icon</string>
+    <string name="empty_fields_message">Fields must not be empty</string>
 </resources>

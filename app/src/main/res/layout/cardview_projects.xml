@@ -122,7 +122,7 @@
                 android:id="@+id/button_take_part_cardview"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@drawable/borde_de_btn"
+                android:background="@drawable/button_edge"
                 android:text="@string/take_part_button" />
 
         </LinearLayout>
