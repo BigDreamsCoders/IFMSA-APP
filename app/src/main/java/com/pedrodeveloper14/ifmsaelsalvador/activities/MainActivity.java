@@ -7,7 +7,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
 import com.pedrodeveloper14.ifmsaelsalvador.R;
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+    @BindView(R.id.toolbar_fragment_main_content)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setThings() {
+        setSupportActionBar(toolbar);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
         navigationView.setNavigationItemSelectedListener(item -> {
             int itemID = item.getItemId();
             String title = "";
@@ -61,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
                     title = ((ProjectsFragment) fragment).getTitle();
                     break;
                 default: /*R.id.profile_menu:*/
-                    fragment=new ProfileFragment();
-                    title=((ProfileFragment)fragment).getTitle();
+                    fragment = new ProfileFragment();
+                    title = ((ProfileFragment) fragment).getTitle();
             }
             setFragment(fragment, title);
             drawerLayout.closeDrawer(GravityCompat.START);
@@ -76,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(title);
     }
 
-    private String getToken(){
+    private String getToken() {
         return getSharedPreferences(getPackageName(), Context.MODE_PRIVATE)
                 .getString(getString(R.string.shared_preferences_key_token), "");
     }

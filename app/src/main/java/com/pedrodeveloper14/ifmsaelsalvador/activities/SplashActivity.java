@@ -26,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
     private void startActivity(){
         Intent intent;
         if(getLocalToken().equals("")){
-            intent=new Intent();
+            intent=new Intent(SplashActivity.this, LoginActivity.class);
         }else{
             intent=new Intent(SplashActivity.this, MainActivity.class);
         }

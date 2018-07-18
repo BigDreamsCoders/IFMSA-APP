@@ -24,4 +24,35 @@
     <string name="user_icon_description">User icon</string>
     <string name="password_icon_description">Password icon</string>
     <string name="empty_fields_message">Fields must not be empty</string>
+    <string name="email_hint">Email</string>
+    <string name="last_name_hint">Last name</string>
+    <string name="first_name_hint">First name</string>
+    <string name="email_field_message">Email must contain 1 upper case, 1 lower case, and at least 8 characters</string>
+    <string name="confirm_password_hint">Confirm password</string>
+    <string name="password_match_message">Password must match</string>
+    <string name="phone_number_hint">Phone number</string>
+    <string name="current_year_text">Current year:</string>
+    <string name="university_text">University:</string>
+    <string name="go_to_login_text">Go to login</string>
+    <string name="form_has_been_completed_text">Form has been completed.</string>
+    <string name="info_text">Please wait for the mail confirmation to access the application and its functions.</string>
+    <string name="open_drawer">Open navigation drawer</string>
+    <string name="close_drawer">Close navigation drawer</string>
+
+    <string-array name="colleges_array">
+        <item>Universidad Dr. José Matías Delgado</item>
+        <item>Universidad Evangélica de El Salvador</item>
+        <item>Universidad Autónoma de Santa Ana</item>
+    </string-array>
+
+    <string-array name="years_array">
+        <item>1°</item>
+        <item>2°</item>
+        <item>3°</item>
+        <item>4°</item>
+        <item>5°</item>
+        <item>6°</item>
+        <item>7°</item>
+        <item>8°</item>
+    </string-array>
 </resources>
