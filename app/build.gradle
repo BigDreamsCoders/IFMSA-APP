@@ -45,4 +45,7 @@ dependencies {
     //Lifecycle
     implementation "android.arch.lifecycle:extensions:$rootProject.archLifecycleVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
+
+    //stepper
+    implementation 'com.stepstone.stepper:material-stepper:4.3.1'
 }
