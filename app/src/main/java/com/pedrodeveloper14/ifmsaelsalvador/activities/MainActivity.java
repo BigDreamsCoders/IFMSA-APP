@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.pedrodeveloper14.ifmsaelsalvador.R;
 import com.pedrodeveloper14.ifmsaelsalvador.fragments.ProfileFragment;
@@ -21,7 +22,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.navigation_view_main_activity)
+    @BindView(R.id.navigation_view)
     NavigationView navigationView;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -50,7 +51,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.drawer_manu, menu);
+        getMenuInflater().inflate(R.menu.drawer_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
         return true;
     }
 
@@ -58,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
+        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
+
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(item -> {
@@ -69,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new ProjectsFragment();
                     title = ((ProjectsFragment) fragment).getTitle();
                     break;
-                default: /*R.id.profile_menu:*/
+                default:
                     fragment = new ProfileFragment();
                     title = ((ProfileFragment) fragment).getTitle();
             }

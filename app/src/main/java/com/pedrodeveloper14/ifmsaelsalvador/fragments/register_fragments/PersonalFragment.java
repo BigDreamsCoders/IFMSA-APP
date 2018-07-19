@@ -85,7 +85,9 @@ public class PersonalFragment extends Fragment implements BlockingStep {
 
     @Override
     public void onError(@NonNull VerificationError error) {
-        Toast.makeText(context, error.getErrorMessage(), Toast.LENGTH_SHORT).show();
+        if(!TextUtils.isEmpty(error.getErrorMessage())) {
+            Toast.makeText(context, error.getErrorMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**

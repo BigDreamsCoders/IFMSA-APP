@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
 import android.view.View;
@@ -59,17 +58,21 @@ public class LoginActivity extends AppCompatActivity {
         textViewForgot.setOnClickListener(v -> startActivity(v.getId()));
     }
 
-
     private void verifyLogin() {
         String user = editTextUsername.getText().toString();
         String pass = editTextPassword.getText().toString();
-        linearLayoutFields.setVisibility(View.GONE);
-        linearLayoutProgress.setVisibility(View.VISIBLE);
+        EditText view;
         if (user.equals("") || pass.equals("")) {
-            linearLayoutFields.setVisibility(View.VISIBLE);
-            linearLayoutProgress.setVisibility(View.GONE);
-            Snackbar.make(relativeLayoutMain, R.string.empty_fields_message, Snackbar.LENGTH_LONG).show();
+            if (user.equals("") && pass.equals("")) {
+                editTextUsername.setError(getString(R.string.empty_fields_message));
+                editTextPassword.setError(getString(R.string.empty_fields_message));
+            } else {
+                view = user.equals("") ? editTextUsername : editTextPassword;
+                view.setError(getString(R.string.empty_fields_message));
+            }
         } else {
+            linearLayoutFields.setVisibility(View.GONE);
+            linearLayoutProgress.setVisibility(View.VISIBLE);
             new Handler().postDelayed(() ->
                     startActivity(buttonLogin.getId()), 2000);
         }

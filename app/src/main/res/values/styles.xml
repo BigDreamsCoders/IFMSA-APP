@@ -10,4 +10,16 @@
         <item name="cardViewStyle">@style/CardView</item>
     </style>
 
+    <style name="DotStepperStyle">
+        <item name="ms_stepperType">dots</item>
+        <item name="ms_activeStepColor">#FFFFFF</item>
+        <item name="ms_inactiveStepColor">#006867</item>
+        <item name="ms_backButtonColor">@color/white</item>
+        <item name="ms_nextButtonColor">@color/white</item>
+        <item name="ms_completeButtonColor">@color/white</item>
+        <item name="ms_bottomNavigationBackground">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
+
 </resources>

@@ -1,5 +1,6 @@
 package com.pedrodeveloper14.ifmsaelsalvador.fragments.register_fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -69,6 +70,7 @@ public class UniversityFragment extends Fragment implements BlockingStep {
         SignUpData.getInstance().setThirdStepInfo(spinnerUniversity.getSelectedItem().toString(), spinnerYear.getSelectedItem().toString(), textInputPhone.getText().toString());
         /*TODO fix this*/
         context.startActivity(new Intent(context, CompleteFormActivity.class));
+        ((Activity)context).finish();
     }
 
     @Override
