@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import com.pedrodeveloper14.ifmsaelsalvador.R;
 import com.pedrodeveloper14.ifmsaelsalvador.fragments.ProfileFragment;
 import com.pedrodeveloper14.ifmsaelsalvador.fragments.ProjectsFragment;
+import com.pedrodeveloper14.ifmsaelsalvador.fragments.RequestProjectFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setThings();
         if (savedInstanceState == null) {
-            setFragment(new ProjectsFragment(), getString(R.string.profile_menu));
+            setFragment(new ProfileFragment(), getString(R.string.profile_menu));
         }
     }
 
@@ -75,16 +76,21 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(item -> {
             int itemID = item.getItemId();
-            String title = "";
             Fragment fragment;
+            String title="";
             switch (itemID) {
                 case R.id.projects_menu:
                     fragment = new ProjectsFragment();
-                    title = ((ProjectsFragment) fragment).getTitle();
+                    title=getString(R.string.projects_menu);
                     break;
-                default:
+                case R.id.profile_menu:
                     fragment = new ProfileFragment();
-                    title = ((ProfileFragment) fragment).getTitle();
+                    title=getString(R.string.profile_menu);
+                    break;
+                default :
+                    fragment=new RequestProjectFragment();
+                    title=getString(R.string.request_project_menu);
+                    break;
             }
             setFragment(fragment, title);
             drawerLayout.closeDrawer(GravityCompat.START);

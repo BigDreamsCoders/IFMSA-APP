@@ -13,9 +13,12 @@ public class Committee {
 
     private String imageUrl;
 
-    public Committee(@NonNull String name, String imageUrl) {
+    private String description;
+
+    public Committee(@NonNull String name, String imageUrl, String description) {
         this.name = name;
         this.imageUrl = imageUrl;
+        this.description = description;
     }
 
     @NonNull
@@ -33,5 +36,13 @@ public class Committee {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

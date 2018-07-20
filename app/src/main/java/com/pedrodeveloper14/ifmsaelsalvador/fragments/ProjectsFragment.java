@@ -53,9 +53,6 @@ public class ProjectsFragment extends Fragment{
         unbinder.unbind();
     }
 
-    public String getTitle(){
-        return context.getString(R.string.projects_menu);
-    }
 
     private void bindView(){
         viewModel= ViewModelProviders.of(this).get(ViewModel.class);

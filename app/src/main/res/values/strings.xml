@@ -38,6 +38,17 @@
     <string name="info_text">Please wait for the mail confirmation to access the application and its functions.</string>
     <string name="open_drawer">Open navigation drawer</string>
     <string name="close_drawer">Close navigation drawer</string>
+    <string name="project_photo_text">Project photo</string>
+    <string name="add_photo_description">Add photo</string>
+    <string name="committee_text">Committee</string>
+    <string name="request_project_text">Request Project</string>
+    <string name="vacancies_hint">Vacancies</string>
+    <string name="project_description_hint">Project description</string>
+    <string name="project_place_hint">Project place</string>
+    <string name="project_name_hint">Project name</string>
+    <string name="project_date_text">Project date</string>
+    <string name="project_time_text">Project hour</string>
+    <string name="join_text">Join</string>
 
     <string-array name="colleges_array">
         <item>Universidad Dr. José Matías Delgado</item>

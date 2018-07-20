@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_20dp"
+        android:layout_marginStart="@dimen/_20dp"
+        android:layout_marginTop="@dimen/_15dp">
+
+        <LinearLayout
+            android:id="@+id/lin1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50dp"
+            android:layout_marginBottom="@dimen/_12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/project_photo_text"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/image_button_project_photo"
+                android:layout_width="@dimen/_100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_12dp"
+                android:layout_marginStart="@dimen/_12dp"
+                android:contentDescription="@string/add_photo_description"
+                android:src="@drawable/add_photo_icon" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/lin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/lin1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/committee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/_30dp"
+                    android:text="@string/committee_text"
+                    android:textSize="@dimen/_16sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spinner_committee"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp" />
+            </LinearLayout>
+
+            <EditText
+                android:layout_below="@id/committee"
+                android:hint="@string/project_name_hint"
+                android:id="@+id/edit_text_project_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+            <EditText
+                android:layout_below="@id/edit_text_project_name"
+                android:id="@+id/edit_text_project_place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/project_place_hint"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+            <EditText
+                android:layout_below="@id/edit_text_project_place"
+                android:id="@+id/edit_text_description"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100dp"
+                android:hint="@string/project_description_hint"
+                android:layout_marginBottom="@dimen/_12dp"
+                android:inputType="text" />
+            <EditText
+                android:layout_below="@id/edit_text_description"
+                android:id="@+id/edit_text_vacancies"
+                android:layout_width="@dimen/_60dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="@string/vacancies_hint"
+                android:inputType="number"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/lin2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/lin"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="@string/project_date_text"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold" />
+
+            <DatePicker
+                android:id="@+id/date_picker_project_date"
+                android:layout_width="match_parent"
+                android:minDate=""
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="@string/project_time_text"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold" />
+            <TimePicker
+                android:id="@+id/time_picker_project_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            </TimePicker>
+        </LinearLayout>
+        <Button
+            android:id="@+id/button_request_project"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lin2"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="32dp"
+            android:background="@drawable/button_edge"
+            android:text="@string/request_project_text"
+            android:textColor="@color/indigo_500"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</ScrollView>

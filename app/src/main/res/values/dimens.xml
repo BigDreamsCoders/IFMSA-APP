@@ -25,4 +25,9 @@
     <dimen name="_18sp">18sp</dimen>
     <dimen name="_250dp">250dp</dimen>
     <dimen name="_10dp">10dp</dimen>
+    <dimen name="_50dp">50dp</dimen>
+    <dimen name="_30dp">30dp</dimen>
+    <dimen name="_100dp">100dp</dimen>
+    <dimen name="_60dp">60dp</dimen>
+    <dimen name="_24sp">24sp</dimen>
 </resources>

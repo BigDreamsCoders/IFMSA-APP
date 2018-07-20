@@ -84,9 +84,6 @@ public class ProfileFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public String getTitle(){
-        return context.getString(R.string.profile_menu);
-    }
     private void setUserInfo(User user){
         fullName.setText(user.getName());
         email.setText(user.getEmail());
