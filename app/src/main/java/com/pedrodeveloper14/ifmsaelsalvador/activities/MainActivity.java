@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.pedrodeveloper14.ifmsaelsalvador.R;
+import com.pedrodeveloper14.ifmsaelsalvador.fragments.CommitteeFragment;
 import com.pedrodeveloper14.ifmsaelsalvador.fragments.ProfileFragment;
 import com.pedrodeveloper14.ifmsaelsalvador.fragments.ProjectsFragment;
 import com.pedrodeveloper14.ifmsaelsalvador.fragments.RequestProjectFragment;
@@ -77,19 +78,23 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(item -> {
             int itemID = item.getItemId();
             Fragment fragment;
-            String title="";
+            String title = "";
             switch (itemID) {
                 case R.id.projects_menu:
                     fragment = new ProjectsFragment();
-                    title=getString(R.string.projects_menu);
+                    title = getString(R.string.projects_menu);
                     break;
                 case R.id.profile_menu:
                     fragment = new ProfileFragment();
-                    title=getString(R.string.profile_menu);
+                    title = getString(R.string.profile_menu);
                     break;
-                default :
-                    fragment=new RequestProjectFragment();
-                    title=getString(R.string.request_project_menu);
+                case R.id.request_project_menu:
+                    fragment = new RequestProjectFragment();
+                    title = getString(R.string.request_project_menu);
+                    break;
+                default:/*case R.id.committees_menu:*/
+                    fragment = new CommitteeFragment();
+                    title = getString(R.string.committees_menu);
                     break;
             }
             setFragment(fragment, title);

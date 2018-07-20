@@ -28,4 +28,9 @@ task clean(type: Delete) {
 ext {
     roomVersion = '1.1.1'
     archLifecycleVersion = '1.1.1'
+    picasso = '2.71828'
+    supportLibrary='27.1.1'
+    butterknife='8.8.1'
+    constraintLayout='1.1.2'
+    stepper='4.3.1'
 }
