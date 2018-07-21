@@ -17,7 +17,7 @@ public class ImagePicker {
         System.out.println(getMaxSize(activity));
         intent.putExtra("crop", "true");
         intent.putExtra("scale", true);
-        intent.putExtra("outputX",getMaxSize(activity));
+        intent.putExtra("outputX", getMaxSize(activity));
         intent.putExtra("outputY", getMaxSize(activity));
         intent.putExtra("aspectX", 1);
         intent.putExtra("aspectY", 1);
@@ -25,9 +25,9 @@ public class ImagePicker {
         activity.startActivityForResult(intent, 1);
     }
 
-    private static int getMaxSize(Context context){
-        Uri uri=ContactsContract.DisplayPhoto.CONTENT_MAX_DIMENSIONS_URI;
-        final String[] projection = new String[] { ContactsContract.DisplayPhoto.DISPLAY_MAX_DIM };
+    private static int getMaxSize(Context context) {
+        Uri uri = ContactsContract.DisplayPhoto.CONTENT_MAX_DIMENSIONS_URI;
+        final String[] projection = new String[]{ContactsContract.DisplayPhoto.DISPLAY_MAX_DIM};
         try (Cursor c = context.getContentResolver().query(uri, projection, null, null, null)) {
             c.moveToFirst();
             return c.getInt(0);

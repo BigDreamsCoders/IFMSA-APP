@@ -3,9 +3,9 @@ package com.pedrodeveloper14.ifmsaelsalvador.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.pedrodeveloper14.ifmsaelsalvador.R;
 
@@ -22,24 +22,25 @@ public class SplashActivity extends AppCompatActivity {
 
     /**
      * Method that starts an activity, depending if there is an token or not
-    */
-    private void startActivity(){
+     */
+    private void startActivity() {
         Intent intent;
-        if(getLocalToken().equals("")){
-            intent=new Intent(SplashActivity.this, LoginActivity.class);
-        }else{
-            intent=new Intent(SplashActivity.this, MainActivity.class);
+        if (getLocalToken().equals("")) {
+            intent = new Intent(SplashActivity.this, LoginActivity.class);
+        } else {
+            intent = new Intent(SplashActivity.this, MainActivity.class);
         }
         startActivity(intent);
         finish();
     }
 
     /**
+     * Method that gets a local token
+     *
      * @return returns the currently saved token
-     *  Method that gets a local token
-    */
-    private String getLocalToken(){
-        SharedPreferences preferences=
+     */
+    private String getLocalToken() {
+        SharedPreferences preferences =
                 getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
         return preferences.getString(getString(R.string.shared_preferences_key_token), "");
     }

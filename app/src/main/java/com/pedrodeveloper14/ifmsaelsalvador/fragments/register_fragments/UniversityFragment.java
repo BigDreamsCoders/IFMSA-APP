@@ -41,21 +41,24 @@ public class UniversityFragment extends Fragment implements BlockingStep {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context=getActivity();
+        context = getActivity();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_university, container, false);
+        View view = inflater.inflate(R.layout.fragment_university, container, false);
         ButterKnife.bind(this, view);
         setThings();
         return view;
     }
 
-    private void setThings(){
-        universityAdapter =ArrayAdapter.createFromResource(context, R.array.colleges_array, android.R.layout.simple_spinner_item);
-        yearAdapter =ArrayAdapter.createFromResource(context, R.array.years_array, android.R.layout.simple_spinner_item);
+    /**
+     * Method that ser references
+     */
+    private void setThings() {
+        universityAdapter = ArrayAdapter.createFromResource(context, R.array.colleges_array, android.R.layout.simple_spinner_item);
+        yearAdapter = ArrayAdapter.createFromResource(context, R.array.years_array, android.R.layout.simple_spinner_item);
         spinnerUniversity.setAdapter(universityAdapter);
         spinnerYear.setAdapter(yearAdapter);
     }
@@ -68,9 +71,9 @@ public class UniversityFragment extends Fragment implements BlockingStep {
     @Override
     public void onCompleteClicked(StepperLayout.OnCompleteClickedCallback callback) {
         SignUpData.getInstance().setThirdStepInfo(spinnerUniversity.getSelectedItem().toString(), spinnerYear.getSelectedItem().toString(), textInputPhone.getText().toString());
-        /*TODO fix this*/
+        /*TODO fix this, add API call*/
         context.startActivity(new Intent(context, CompleteFormActivity.class));
-        ((Activity)context).finish();
+        ((Activity) context).finish();
     }
 
     @Override
@@ -81,8 +84,8 @@ public class UniversityFragment extends Fragment implements BlockingStep {
     @Nullable
     @Override
     public VerificationError verifyStep() {
-        String phone=textInputPhone.getText().toString();
-        if(TextUtils.isEmpty(phone)){
+        String phone = textInputPhone.getText().toString();
+        if (TextUtils.isEmpty(phone)) {
             textInputPhone.setError(getString(R.string.empty_fields_message));
             textInputPhone.requestFocus();
             return new VerificationError("");

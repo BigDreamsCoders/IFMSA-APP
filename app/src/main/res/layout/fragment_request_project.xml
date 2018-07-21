@@ -7,40 +7,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_20dp"
+        android:layout_marginRight="@dimen/_20dp"
+        android:layout_marginLeft="@dimen/_20dp"
         android:layout_marginStart="@dimen/_20dp"
         android:layout_marginTop="@dimen/_15dp">
-
-        <LinearLayout
-            android:id="@+id/lin1"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_50dp"
-            android:layout_marginBottom="@dimen/_12dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/project_photo_text"
-                android:textSize="@dimen/_16sp"
-                android:textStyle="bold" />
-
-            <ImageButton
-                android:id="@+id/image_button_project_photo"
-                android:layout_width="@dimen/_100dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/_12dp"
-                android:layout_marginStart="@dimen/_12dp"
-                android:contentDescription="@string/add_photo_description"
-                android:src="@drawable/add_photo_icon" />
-
-        </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/lin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/lin1"
             android:orientation="vertical">
 
             <LinearLayout
@@ -141,12 +116,12 @@
         </LinearLayout>
         <Button
             android:id="@+id/button_request_project"
-            android:layout_width="200dp"
+            android:layout_width="@dimen/_200dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/lin2"
             android:layout_centerInParent="true"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="32dp"
+            android:layout_margin="@dimen/_32dp"
             android:background="@drawable/button_edge"
             android:text="@string/request_project_text"
             android:textColor="@color/indigo_500"

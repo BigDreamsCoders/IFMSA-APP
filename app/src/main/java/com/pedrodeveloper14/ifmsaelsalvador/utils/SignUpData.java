@@ -17,14 +17,26 @@ public class SignUpData {
 
     private String name, email, username, password, college, year, phone;
 
-    public void setFirstStepInfo(String fName, String email) {
-        this.name = fName;
+    /**
+     * Method to save personal info from user
+     *
+     * @param name  name of the user
+     * @param email email of the user
+     */
+    public void setFirstStepInfo(String name, String email) {
+        this.name = name;
         this.email = email;
     }
 
+    /**
+     * Method to save credentials info from user
+     *
+     * @param username username of the user
+     * @param password password of the user
+     */
     public void setSecondStepInfo(String username, String password) {
         this.username = username;
-        this.password = password;
+        this.password = Encryption.encrypt(password);
     }
 
     public void setThirdStepInfo(String collage, String year, String phone) {
@@ -33,35 +45,10 @@ public class SignUpData {
         this.phone = phone;
     }
 
-    private void setName(String name) {
-        this.name = name;
-    }
-
-
-    private void setEmail(String email) {
-        this.email = email;
-    }
-
-    private void setUsername(String username) {
-        this.username = username;
-    }
-
-    private void setPassword(String password) {
-        this.password = password;
-    }
-
-    private void setCollege(String college) {
-        this.college = college;
-    }
-
-    private void setYear(String year) {
-        this.year = year;
-    }
 
     public String getName() {
         return name;
     }
-
 
     public String getEmail() {
         return email;
@@ -87,7 +74,4 @@ public class SignUpData {
         return phone;
     }
 
-    private void setPhone(String phone) {
-        this.phone = phone;
-    }
 }

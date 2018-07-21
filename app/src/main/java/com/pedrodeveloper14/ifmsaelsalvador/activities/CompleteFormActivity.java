@@ -1,8 +1,8 @@
 package com.pedrodeveloper14.ifmsaelsalvador.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
 import com.pedrodeveloper14.ifmsaelsalvador.R;
@@ -23,9 +23,12 @@ public class CompleteFormActivity extends AppCompatActivity {
         setThings();
     }
 
-    private void setThings(){
-        button.setOnClickListener(v->
-            startActivity(new Intent(CompleteFormActivity.this, LoginActivity.class))
+    /**
+     * Method that set references and listeners
+     */
+    private void setThings() {
+        button.setOnClickListener(v ->
+                startActivity(new Intent(CompleteFormActivity.this, LoginActivity.class))
         );
     }
 }

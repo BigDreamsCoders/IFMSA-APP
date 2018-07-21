@@ -2,11 +2,9 @@ package com.pedrodeveloper14.ifmsaelsalvador.database.daos;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
 
 import com.pedrodeveloper14.ifmsaelsalvador.database.models.Project;
 
@@ -17,6 +15,7 @@ public interface ProjectDao {
 
     /**
      * Method tha insert an project to the db
+     *
      * @param project project to be inserted
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -24,6 +23,7 @@ public interface ProjectDao {
 
     /**
      * Method to updateProject the state of assistance
+     *
      * @param id id to be searched
      */
     @Query("UPDATE Project SET took_part=:take_apart WHERE id= :id")
@@ -31,6 +31,7 @@ public interface ProjectDao {
 
     /**
      * Method that select all projects
+     *
      * @return all projects located in the db
      */
     @Query("SELECT*FROM Project")
@@ -45,6 +46,7 @@ public interface ProjectDao {
 
     /**
      * Method that return the current user projects
+     *
      * @return return the list of current user projects
      */
     @Query("SELECT*FROM Project WHERE took_part=1")

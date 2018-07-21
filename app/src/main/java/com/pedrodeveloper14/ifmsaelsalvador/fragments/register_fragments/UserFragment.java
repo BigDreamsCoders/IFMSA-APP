@@ -39,14 +39,14 @@ public class UserFragment extends Fragment implements BlockingStep {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context=getActivity();
+        context = getActivity();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_user, container, false);
-        unbinder=ButterKnife.bind(this, view);
+        View view = inflater.inflate(R.layout.fragment_user, container, false);
+        unbinder = ButterKnife.bind(this, view);
         return view;
     }
 
@@ -58,7 +58,7 @@ public class UserFragment extends Fragment implements BlockingStep {
 
     @Override
     public void onNextClicked(StepperLayout.OnNextClickedCallback callback) {
-        new Handler().postDelayed(()->onNext(callback), 500);
+        new Handler().postDelayed(() -> onNext(callback), 500);
     }
 
     @Override
@@ -74,20 +74,20 @@ public class UserFragment extends Fragment implements BlockingStep {
     @Nullable
     @Override
     public VerificationError verifyStep() {
-        String user=username.getText().toString(),
-                password1=pass1.getText().toString(),
-                password2=pass2.getText().toString();
-        if(TextUtils.isEmpty(user) ||
+        String user = username.getText().toString(),
+                password1 = pass1.getText().toString(),
+                password2 = pass2.getText().toString();
+        if (TextUtils.isEmpty(user) ||
                 TextUtils.isEmpty(password1) ||
-                TextUtils.isEmpty(password2)){
+                TextUtils.isEmpty(password2)) {
             return new VerificationError(getString(R.string.empty_fields_message));
         }
-        if(!validatePassword(password1)){
+        if (!validatePassword(password1)) {
             pass1.setError(getString(R.string.email_field_message));
             pass1.requestFocus();
             return new VerificationError("");
         }
-        if(!TextUtils.equals(password1, password2)){
+        if (!TextUtils.equals(password1, password2)) {
             pass2.setError(getString(R.string.password_match_message));
             pass2.requestFocus();
             return new VerificationError("");
@@ -105,12 +105,21 @@ public class UserFragment extends Fragment implements BlockingStep {
 
     }
 
-    private boolean validatePassword(String pass){
-        String regex="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$";
-        Pattern pattern=Pattern.compile(regex);
+    /**
+     * Method to validate password
+     *
+     * @param pass password to be validated
+     * @return true if the password is valid, false otherwise
+     */
+    private boolean validatePassword(String pass) {
+        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$";
+        Pattern pattern = Pattern.compile(regex);
         return pattern.matcher(pass).matches();
     }
 
+    /**
+     * Method that save data from this fragment
+     */
     private void onNext(StepperLayout.OnNextClickedCallback callback) {
         SignUpData.getInstance().
                 setSecondStepInfo(

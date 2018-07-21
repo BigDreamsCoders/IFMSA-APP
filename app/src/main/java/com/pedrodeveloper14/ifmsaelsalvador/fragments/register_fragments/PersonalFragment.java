@@ -68,14 +68,14 @@ public class PersonalFragment extends Fragment implements BlockingStep {
         String fName = firstName.getText().toString(),
                 lName = lastName.getText().toString(),
                 mail = email.getText().toString();
-        if (TextUtils.isEmpty(fName) || TextUtils.isEmpty(lName) || TextUtils.isEmpty(mail)){
+        if (TextUtils.isEmpty(fName) || TextUtils.isEmpty(lName) || TextUtils.isEmpty(mail)) {
             return new VerificationError(getString(R.string.empty_fields_message));
         }
-        if(!validateEmail(mail)){
+        if (!validateEmail(mail)) {
             email.setError(getString(R.string.email_field_message));
             return new VerificationError("");
         }
-            return null;
+        return null;
     }
 
     @Override
@@ -85,7 +85,7 @@ public class PersonalFragment extends Fragment implements BlockingStep {
 
     @Override
     public void onError(@NonNull VerificationError error) {
-        if(!TextUtils.isEmpty(error.getErrorMessage())) {
+        if (!TextUtils.isEmpty(error.getErrorMessage())) {
             Toast.makeText(context, error.getErrorMessage(), Toast.LENGTH_SHORT).show();
         }
     }
@@ -102,7 +102,7 @@ public class PersonalFragment extends Fragment implements BlockingStep {
 
 
     /**
-     * Methd that save data from this fragment
+     * Method that save data from this fragment
      */
     private void onNext(StepperLayout.OnNextClickedCallback callback) {
         String fName = firstName.getText().toString(),

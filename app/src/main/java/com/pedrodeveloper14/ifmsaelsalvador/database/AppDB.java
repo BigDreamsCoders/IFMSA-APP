@@ -27,6 +27,8 @@ public abstract class AppDB extends RoomDatabase {
     }
 
     public abstract ProjectDao projectDao();
+
     public abstract CommitteeDao committeeDao();
+
     public abstract UserDao userDao();
 }

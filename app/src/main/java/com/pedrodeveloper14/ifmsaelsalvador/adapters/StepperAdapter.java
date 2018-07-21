@@ -5,13 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.view.View;
 
 import com.pedrodeveloper14.ifmsaelsalvador.fragments.register_fragments.PersonalFragment;
 import com.pedrodeveloper14.ifmsaelsalvador.fragments.register_fragments.UserFragment;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.adapter.AbstractFragmentStepAdapter;
-import com.stepstone.stepper.adapter.AbstractStepAdapter;
 
 public class StepperAdapter extends AbstractFragmentStepAdapter {
 
@@ -23,18 +21,18 @@ public class StepperAdapter extends AbstractFragmentStepAdapter {
 
     @Override
     public Step createStep(int position) {
-        Bundle bundle=new Bundle();
+        Bundle bundle = new Bundle();
         Step fragment;
-        switch (position){
+        switch (position) {
             case 0:
-                fragment= new PersonalFragment();
+                fragment = new PersonalFragment();
                 bundle.putInt(KEY, position);
-                ((Fragment)fragment).setArguments(bundle);
+                ((Fragment) fragment).setArguments(bundle);
                 break;
             default:
-                fragment=new UserFragment();
+                fragment = new UserFragment();
                 bundle.putInt(KEY, position);
-                ((Fragment)fragment).setArguments(bundle);
+                ((Fragment) fragment).setArguments(bundle);
                 break;
         }
         return fragment;

@@ -11,7 +11,7 @@ public class Project {
     private String id;
 
     private String
-    hour, date, place, name, committee;
+            hour, date, place, name, committee;
     private int took_part;
 
     public Project(@NonNull String id, String hour, String date, String place, String name, String committee, int took_part) {

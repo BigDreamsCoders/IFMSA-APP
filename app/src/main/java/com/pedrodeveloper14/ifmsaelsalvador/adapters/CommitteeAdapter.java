@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.pedrodeveloper14.ifmsaelsalvador.R;
 import com.pedrodeveloper14.ifmsaelsalvador.database.models.Committee;
 import com.pedrodeveloper14.ifmsaelsalvador.utils.ImageLoader;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -25,7 +24,7 @@ public abstract class CommitteeAdapter extends RecyclerView.Adapter<CommitteeAda
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater
+        View view = LayoutInflater
                 .from(parent.getContext())
                 .inflate(R.layout.cardview_committee, parent, false);
         return new ViewHolder(view);
@@ -33,8 +32,8 @@ public abstract class CommitteeAdapter extends RecyclerView.Adapter<CommitteeAda
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Committee aux=committees.get(position);
-        holder.committee=aux;
+        Committee aux = committees.get(position);
+        holder.committee = aux;
         holder.textViewCommitteeName.setText(aux.getName());
         holder.textViewCommitteeDescription.setText(aux.getDescription());
         ImageLoader.loadImage(aux.getImageUrl(), holder.imageViewCommitteeLogo);
@@ -42,14 +41,24 @@ public abstract class CommitteeAdapter extends RecyclerView.Adapter<CommitteeAda
 
     @Override
     public int getItemCount() {
-        return committees==null?0:committees.size();
+        return committees == null ? 0 : committees.size();
     }
 
-    public void setCommittees(List<Committee> committees){
-        this.committees=committees;
+    /**
+     * Method to set list of committees
+     *
+     * @param committees list of committees in the database
+     */
+    public void setCommittees(List<Committee> committees) {
+        this.committees = committees;
         notifyDataSetChanged();
     }
 
+    /**
+     * Abstract method that set the action when the {@link android.support.v7.widget.CardView} is open
+     *
+     * @param committee committee selected
+     */
     public abstract void onCardClick(Committee committee);
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -65,7 +74,7 @@ public abstract class CommitteeAdapter extends RecyclerView.Adapter<CommitteeAda
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(v->onCardClick(committee));
+            itemView.setOnClickListener(v -> onCardClick(committee));
         }
     }
 }

@@ -45,14 +45,14 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context=getActivity();
+        context = getActivity();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_profile, container, false);
-        unbinder=ButterKnife.bind(this, view);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        unbinder = ButterKnife.bind(this, view);
         return view;
     }
 
@@ -62,9 +62,12 @@ public class ProfileFragment extends Fragment {
         unbinder.unbind();
     }
 
-    private void setThings(){
-        viewModel= ViewModelProviders.of(this).get(ViewModel.class);
-        adapter=new ProjectsAdapter() {
+    /**
+     * Method to set references and an listeners
+     */
+    private void setThings() {
+        viewModel = ViewModelProviders.of(this).get(ViewModel.class);
+        adapter = new ProjectsAdapter() {
             @Override
             public void onCardViewClick(Project project) {
 
@@ -77,14 +80,19 @@ public class ProfileFragment extends Fragment {
             }
         };
         viewModel.getCurrentUserProjects()
-                .observe(this,list->adapter.setProjects(list));
+                .observe(this, list -> adapter.setProjects(list));
         viewModel.getCurrentUser()
                 .observe(this, this::setUserInfo);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    private void setUserInfo(User user){
+    /**
+     * Method that set the info of the current user
+     *
+     * @param user current user logged
+     */
+    private void setUserInfo(User user) {
         fullName.setText(user.getName());
         email.setText(user.getEmail());
         university.setText(user.getCollage());

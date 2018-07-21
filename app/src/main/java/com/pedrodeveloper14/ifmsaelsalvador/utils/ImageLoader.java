@@ -8,6 +8,12 @@ import com.squareup.picasso.Picasso;
 
 public class ImageLoader {
 
+    /**
+     * Method that load image with {@link Picasso}
+     *
+     * @param url       String that contains an url of the image
+     * @param imageView View where the image will be loaded
+     */
     public static void loadImage(String url, ImageView imageView) {
         try {
             if (!TextUtils.isEmpty(url)) {

@@ -23,7 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class ProjectsFragment extends Fragment{
+public class ProjectsFragment extends Fragment {
 
     @BindView(R.id.recycler_view_generic)
     RecyclerView recyclerView;
@@ -35,14 +35,14 @@ public class ProjectsFragment extends Fragment{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context=getActivity();
+        context = getActivity();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.generic_recycler_view, container, false);;
-        unbinder= ButterKnife.bind(this, view);
+        View view = inflater.inflate(R.layout.generic_recycler_view, container, false);
+        unbinder = ButterKnife.bind(this, view);
         bindView();
         return view;
     }
@@ -53,10 +53,12 @@ public class ProjectsFragment extends Fragment{
         unbinder.unbind();
     }
 
-
-    private void bindView(){
-        viewModel= ViewModelProviders.of(this).get(ViewModel.class);
-        adapter=new ProjectsAdapter() {
+    /**
+     * Method to set references and an listeners
+     */
+    private void bindView() {
+        viewModel = ViewModelProviders.of(this).get(ViewModel.class);
+        adapter = new ProjectsAdapter() {
             @Override
             public void onCardViewClick(Project project) {
                 startActivity(project);
@@ -69,13 +71,19 @@ public class ProjectsFragment extends Fragment{
             }
         };
         viewModel.getAllProjects()
-                .observe(this, list->adapter.setProjects(list));
+                .observe(this, list -> adapter.setProjects(list));
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
     }
 
-    private void startActivity(Project project){
-        Intent intent=new Intent(context, SplashActivity.class);
+
+    /**
+     * Method that starts activity
+     *
+     * @param project project to be show in the activity
+     */
+    private void startActivity(Project project) {
+        Intent intent = new Intent(context, SplashActivity.class);
         startActivity(intent);
     }
 }

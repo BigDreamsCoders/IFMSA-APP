@@ -13,20 +13,21 @@ import com.pedrodeveloper14.ifmsaelsalvador.database.repository.Repository;
 
 import java.util.List;
 
-public class ViewModel extends AndroidViewModel{
+public class ViewModel extends AndroidViewModel {
 
     private Repository repository;
 
     public ViewModel(@NonNull Application application) {
         super(application);
-        repository=new Repository(application);
+        repository = new Repository(application);
     }
 
     //Project things
-    public void insertProject(Project project){
+    public void insertProject(Project project) {
         new InsertProject(repository, project).execute();
     }
-    public static class InsertProject extends AsyncTask<Void, Void, Void>{
+
+    public static class InsertProject extends AsyncTask<Void, Void, Void> {
 
         private Repository repository;
         private Project project;
@@ -43,17 +44,18 @@ public class ViewModel extends AndroidViewModel{
         }
     }
 
-    public void updateProject(String id, int take_part){
+    public void updateProject(String id, int take_part) {
         new UpdateProject(repository, take_part, id).execute();
     }
-    public static class UpdateProject extends AsyncTask<Void, Void, Void>{
+
+    public static class UpdateProject extends AsyncTask<Void, Void, Void> {
         private Repository repository;
         private int take_apart;
         private String id;
 
         public UpdateProject(Repository repository, int take_apart, String id) {
             this.repository = repository;
-            this.take_apart = take_apart==0?1:0;
+            this.take_apart = take_apart == 0 ? 1 : 0;
             this.id = id;
         }
 
@@ -64,20 +66,23 @@ public class ViewModel extends AndroidViewModel{
         }
     }
 
-    public LiveData<List<Project>> getAllProjects(){
+    public LiveData<List<Project>> getAllProjects() {
         return repository.getAllProjects();
     }
 
-    public LiveData<List<Project>> getProjectsByCommittee(String committee){
+    public LiveData<List<Project>> getProjectsByCommittee(String committee) {
         return repository.getProjectsByCommittee(committee);
     }
 
-    public LiveData<List<Project>> getCurrentUserProjects(){return repository.getCurrentUserProjects();}
+    public LiveData<List<Project>> getCurrentUserProjects() {
+        return repository.getCurrentUserProjects();
+    }
 
-    public void deleteProjectTable(){
+    public void deleteProjectTable() {
         new DeleteProjectTable(repository).execute();
     }
-    public static class DeleteProjectTable extends AsyncTask<Void, Void, Void>{
+
+    public static class DeleteProjectTable extends AsyncTask<Void, Void, Void> {
 
         private Repository repository;
 
@@ -93,10 +98,11 @@ public class ViewModel extends AndroidViewModel{
     }
 
     //Committees things
-    public void insertCommittee(Committee committee){
+    public void insertCommittee(Committee committee) {
         new InsertCommittee(repository, committee).execute();
     }
-    public static class InsertCommittee extends AsyncTask<Void, Void, Void>{
+
+    public static class InsertCommittee extends AsyncTask<Void, Void, Void> {
         private Repository repository;
         private Committee committee;
 
@@ -112,12 +118,15 @@ public class ViewModel extends AndroidViewModel{
         }
     }
 
-    public LiveData<List<Committee>> getAllCommittees(){
+    public LiveData<List<Committee>> getAllCommittees() {
         return repository.getAllCommittees();
     }
 
-    public void deleteCommitteeTable(){new DeleteProjectTable(repository).execute();}
-    public static class DeleteCommitteeTable extends AsyncTask<Void, Void, Void>{
+    public void deleteCommitteeTable() {
+        new DeleteProjectTable(repository).execute();
+    }
+
+    public static class DeleteCommitteeTable extends AsyncTask<Void, Void, Void> {
 
         private Repository repository;
 
@@ -133,8 +142,11 @@ public class ViewModel extends AndroidViewModel{
     }
 
     //User things
-    public void insertUser(User user){new InsertUser(repository, user).execute();}
-    public static class InsertUser extends AsyncTask<Void, Void, Void>{
+    public void insertUser(User user) {
+        new InsertUser(repository, user).execute();
+    }
+
+    public static class InsertUser extends AsyncTask<Void, Void, Void> {
 
         private Repository repository;
         private User user;
@@ -151,10 +163,15 @@ public class ViewModel extends AndroidViewModel{
         }
     }
 
-    public LiveData<User> getCurrentUser(){return repository.getCurrentUser();}
+    public LiveData<User> getCurrentUser() {
+        return repository.getCurrentUser();
+    }
 
-    public void deleteUser(){new DeleteUserTable(repository).execute();}
-    public static class DeleteUserTable extends AsyncTask<Void, Void, Void>{
+    public void deleteUser() {
+        new DeleteUserTable(repository).execute();
+    }
+
+    public static class DeleteUserTable extends AsyncTask<Void, Void, Void> {
 
         private Repository repository;
 

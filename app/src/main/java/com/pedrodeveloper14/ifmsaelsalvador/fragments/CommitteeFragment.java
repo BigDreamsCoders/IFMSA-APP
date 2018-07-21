@@ -54,6 +54,9 @@ public class CommitteeFragment extends Fragment {
         unbinder.unbind();
     }
 
+    /**
+     * Method to set references and an listeners
+     */
     private void setThings() {
         viewModel = ViewModelProviders.of(this).get(ViewModel.class);
         adapter = new CommitteeAdapter() {

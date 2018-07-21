@@ -1,7 +1,7 @@
 package com.pedrodeveloper14.ifmsaelsalvador.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.pedrodeveloper14.ifmsaelsalvador.R;
 import com.pedrodeveloper14.ifmsaelsalvador.adapters.StepperAdapter;
@@ -10,7 +10,7 @@ import com.stepstone.stepper.StepperLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RegisterActivity extends AppCompatActivity{
+public class RegisterActivity extends AppCompatActivity {
 
     @BindView(R.id.stepper_layout)
     StepperLayout stepperLayout;

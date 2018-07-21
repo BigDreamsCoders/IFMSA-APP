@@ -52,12 +52,19 @@ public class LoginActivity extends AppCompatActivity {
         setThings();
     }
 
+
+    /**
+     * Method that set listeners
+     */
     private void setThings() {
         buttonLogin.setOnClickListener(v -> verifyLogin());
         textViewRegister.setOnClickListener(v -> startActivity(v.getId()));
         textViewForgot.setOnClickListener(v -> startActivity(v.getId()));
     }
 
+    /**
+     * Method that verify if the fields are empty, if there are, an error message is triggered
+     */
     private void verifyLogin() {
         String user = editTextUsername.getText().toString();
         String pass = editTextPassword.getText().toString();

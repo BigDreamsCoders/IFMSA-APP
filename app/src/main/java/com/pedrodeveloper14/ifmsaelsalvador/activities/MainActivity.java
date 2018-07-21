@@ -10,7 +10,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.pedrodeveloper14.ifmsaelsalvador.R;
@@ -52,12 +51,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.drawer_menu, menu);
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -67,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Method that set references and listeners
+     */
     private void setThings() {
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -103,12 +99,23 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method that replace fragments, depending the {@link NavigationView}
+     *
+     * @param fragment fragment to replace
+     * @param title    title of the fragment
+     */
     private void setFragment(Fragment fragment, String title) {
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.main_fragment_container, fragment).commit();
         getSupportActionBar().setTitle(title);
     }
 
+    /**
+     * Method that search if there is an existing token
+     *
+     * @return token if it exist, "" otherwise
+     */
     private String getToken() {
         return getSharedPreferences(getPackageName(), Context.MODE_PRIVATE)
                 .getString(getString(R.string.shared_preferences_key_token), "");

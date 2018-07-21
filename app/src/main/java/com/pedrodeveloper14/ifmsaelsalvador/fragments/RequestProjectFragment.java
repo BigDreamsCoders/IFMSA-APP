@@ -6,7 +6,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -19,7 +18,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.pedrodeveloper14.ifmsaelsalvador.R;
 import com.pedrodeveloper14.ifmsaelsalvador.database.models.Committee;
@@ -79,24 +77,38 @@ public class RequestProjectFragment extends Fragment {
         unbinder.unbind();
     }
 
+    /**
+     * Method to set references and an listeners
+     */
     private void setThings() {
         viewModel = ViewModelProviders.of(this).get(ViewModel.class);
-        viewModel.getAllCommittees().observe(this, list ->{
-                adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, getCommitteesData(list));
-                adapter.notifyDataSetChanged();
-                spinnerCommittee.setAdapter(adapter);
+        viewModel.getAllCommittees().observe(this, list -> {
+            adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, getCommitteesData(list));
+            adapter.notifyDataSetChanged();
+            spinnerCommittee.setAdapter(adapter);
         });
         spinnerCommittee.setAdapter(adapter);
-        datePickerProjectDate.init(Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH, null);
-        if(Build.VERSION.SDK_INT<Build.VERSION_CODES.M){
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int month = Calendar.getInstance().get(Calendar.MONTH);
+        int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        datePickerProjectDate.init(year, month, day, null);
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             timePickerProjectTime.setCurrentHour(12);
             timePickerProjectTime.setCurrentMinute(0);
-        }else{
+        } else {
             timePickerProjectTime.setHour(12);
             timePickerProjectTime.setMinute(0);
         }
+        setListeners();
     }
 
+    /**
+     * Method that set the item into the {@link Spinner}
+     *
+     * @param committees list of committees to be inserted into the {@link Spinner}
+     * @return Array of Strings with all the committees
+     */
     private String[] getCommitteesData(List<Committee> committees) {
         if (committees != null && committees.size() != 0) {
             int size = committees.size();
@@ -111,28 +123,35 @@ public class RequestProjectFragment extends Fragment {
         }
     }
 
-    private void setListeners(){
+    /**
+     * Method to set listeners
+     */
+    private void setListeners() {
         /*imageButtonProjectPhoto.setOnClickListener(v->{
             ImagePicker.pickImage((Activity)context);
         });*/
-        buttonRequestProject.setOnClickListener(v->{
-            if(verifyFields()){
+        buttonRequestProject.setOnClickListener(v -> {
+            if (verifyFields()) {
                 requestProject();
-                Toast.makeText(context, "Yea wey", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private boolean verifyFields(){
-        String name=editTextProjectName.getText().toString();
-        String place=editTextProjectPlace.getText().toString();
-        String vacancies=editTextProjectVacancies.getText().toString();
-        if(TextUtils.isEmpty(name)||TextUtils.isEmpty(place)||TextUtils.isEmpty(vacancies)){
-            if(TextUtils.isEmpty(name)){
+    /**
+     * Method that verify if the fields are empty or not
+     *
+     * @return true if the fields are not empty, false otherwise
+     */
+    private boolean verifyFields() {
+        String name = editTextProjectName.getText().toString();
+        String place = editTextProjectPlace.getText().toString();
+        String vacancies = editTextProjectVacancies.getText().toString();
+        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(place) || TextUtils.isEmpty(vacancies)) {
+            if (TextUtils.isEmpty(name)) {
                 editTextProjectName.setError(getString(R.string.empty_fields_message));
-            }else if (TextUtils.isEmpty(place)){
+            } else if (TextUtils.isEmpty(place)) {
                 editTextProjectPlace.setError(getString(R.string.empty_fields_message));
-            }else{
+            } else {
                 editTextProjectVacancies.setError(getString(R.string.empty_fields_message));
             }
             return false;
@@ -140,21 +159,23 @@ public class RequestProjectFragment extends Fragment {
         return true;
     }
 
-    private void requestProject(){
-        String name=editTextProjectName.getText().toString();
-        String place=editTextProjectPlace.getText().toString();
-        String vacancies=editTextProjectVacancies.getText().toString();
-        String day=String.valueOf(datePickerProjectDate.getDayOfMonth());
-        String month=String.valueOf(datePickerProjectDate.getMonth());
-        String year=String.valueOf(datePickerProjectDate.getYear());
+    /**
+     * Method that start an API call to request a project
+     */
+    private void requestProject() {
+        String name = editTextProjectName.getText().toString();
+        String place = editTextProjectPlace.getText().toString();
+        String vacancies = editTextProjectVacancies.getText().toString();
+        String day = String.valueOf(datePickerProjectDate.getDayOfMonth());
+        String month = String.valueOf(datePickerProjectDate.getMonth());
+        String year = String.valueOf(datePickerProjectDate.getYear());
         String hour, minute;
-        if(Build.VERSION.SDK_INT<Build.VERSION_CODES.M){
-            hour=String.valueOf(timePickerProjectTime.getCurrentHour());
-            minute=String.valueOf(timePickerProjectTime.getCurrentMinute());
-        }else{
-            hour=String.valueOf(timePickerProjectTime.getHour());
-            minute=String.valueOf(timePickerProjectTime.getMinute());
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            hour = String.valueOf(timePickerProjectTime.getCurrentHour());
+            minute = String.valueOf(timePickerProjectTime.getCurrentMinute());
+        } else {
+            hour = String.valueOf(timePickerProjectTime.getHour());
+            minute = String.valueOf(timePickerProjectTime.getMinute());
         }
-        System.out.println(name+"\n"+place+"\n"+vacancies+"\n"+day+"\n"+month+"\n"+year+"\n"+hour+"\n"+minute);
     }
 }

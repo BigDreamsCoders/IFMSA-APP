@@ -13,6 +13,7 @@ public interface UserDao {
 
     /**
      * Method tha insert an user to the db
+     *
      * @param user user to be inserted
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -20,6 +21,7 @@ public interface UserDao {
 
     /**
      * Method tha return the current logged user
+     *
      * @return current logged user
      */
     @Query("SELECT*FROM User")

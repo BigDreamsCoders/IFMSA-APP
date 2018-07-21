@@ -7,7 +7,6 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
 import com.pedrodeveloper14.ifmsaelsalvador.database.models.Committee;
-import com.pedrodeveloper14.ifmsaelsalvador.database.models.Project;
 
 import java.util.List;
 
@@ -16,6 +15,7 @@ public interface CommitteeDao {
 
     /**
      * Method tha insert an committee to the db
+     *
      * @param committee committee to be inserted
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -23,6 +23,7 @@ public interface CommitteeDao {
 
     /**
      * Method that select all committees
+     *
      * @return all committees located in the db
      */
     @Query("SELECT*FROM Committee")

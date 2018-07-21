@@ -2,17 +2,15 @@ package com.pedrodeveloper14.ifmsaelsalvador.activities;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pedrodeveloper14.ifmsaelsalvador.R;
-import com.pedrodeveloper14.ifmsaelsalvador.adapters.CommitteeAdapter;
 import com.pedrodeveloper14.ifmsaelsalvador.adapters.ProjectsAdapter;
-import com.pedrodeveloper14.ifmsaelsalvador.database.models.Committee;
 import com.pedrodeveloper14.ifmsaelsalvador.database.models.Project;
 import com.pedrodeveloper14.ifmsaelsalvador.database.viewmodel.ViewModel;
 import com.pedrodeveloper14.ifmsaelsalvador.utils.ImageLoader;
@@ -44,18 +42,26 @@ public class CommitteeViewActivity extends AppCompatActivity {
         getDataFromIntent(getIntent());
     }
 
-    private void getDataFromIntent(Intent intent){
-        Bundle bundle=intent.getExtras();
-        if(bundle!=null){
+    /**
+     * Method that get the extra data from the receiving intent
+     *
+     * @param intent intent to get data
+     */
+    private void getDataFromIntent(Intent intent) {
+        Bundle bundle = intent.getExtras();
+        if (bundle != null) {
             textViewCommitteeName.setText(bundle.getString("name"));
             textViewCommitteeDescription.setText(bundle.getString("description"));
             ImageLoader.loadImage(bundle.getString("url"), imageViewCommitteeLogo);
         }
     }
 
-    private void setThings(){
-        viewModel= ViewModelProviders.of(this).get(ViewModel.class);
-        adapter=new ProjectsAdapter() {
+    /**
+     * Method that set references and listeners
+     */
+    private void setThings() {
+        viewModel = ViewModelProviders.of(this).get(ViewModel.class);
+        adapter = new ProjectsAdapter() {
             @Override
             public void onCardViewClick(Project project) {
 
