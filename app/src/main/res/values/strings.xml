@@ -49,6 +49,8 @@
     <string name="project_date_text">Project date</string>
     <string name="project_time_text">Project hour</string>
     <string name="join_text">Join</string>
+    <string name="project_committee_description">Project committee</string>
+    <string name="project_photo_description">Project photo</string>
 
     <string-array name="colleges_array">
         <item>Universidad Dr. José Matías Delgado</item>

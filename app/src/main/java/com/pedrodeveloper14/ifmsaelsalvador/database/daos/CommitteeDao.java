@@ -30,6 +30,15 @@ public interface CommitteeDao {
     LiveData<List<Committee>> getAllCommittees();
 
     /**
+     * Method that select an committee by given param
+     *
+     * @param name name of the committee to search
+     * @return committee that match the given param
+     */
+    @Query("SELECT*FROM Committee WHERE name=:name")
+    LiveData<Committee> getCommitteeByName(String name);
+
+    /**
      * Method to delete the committee table
      */
     @Query("DELETE FROM Committee")

@@ -4,6 +4,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import java.util.List;
+
 @Entity
 public class Project {
     @PrimaryKey
@@ -11,16 +13,19 @@ public class Project {
     private String id;
 
     private String
-            hour, date, place, name, committee;
+            hour, date, place, name, committee, description;
     private int took_part;
 
-    public Project(@NonNull String id, String hour, String date, String place, String name, String committee, int took_part) {
+    private List<String> photos;
+
+    public Project(@NonNull String id, String hour, String date, String place, String name, String committee, String description, int took_part) {
         this.id = id;
         this.hour = hour;
         this.date = date;
         this.place = place;
         this.name = name;
         this.committee = committee;
+        this.description = description;
         this.took_part = took_part;
     }
 
@@ -79,5 +84,21 @@ public class Project {
 
     public void setCommittee(String committee) {
         this.committee = committee;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<String> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<String> photos) {
+        this.photos = photos;
     }
 }

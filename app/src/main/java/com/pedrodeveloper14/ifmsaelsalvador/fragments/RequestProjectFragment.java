@@ -31,6 +31,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import okhttp3.MultipartBody;
 
 public class RequestProjectFragment extends Fragment {
 
@@ -46,8 +47,6 @@ public class RequestProjectFragment extends Fragment {
     DatePicker datePickerProjectDate;
     @BindView(R.id.spinner_committee)
     Spinner spinnerCommittee;
-    @BindView(R.id.image_button_project_photo)
-    ImageButton imageButtonProjectPhoto;
     @BindView(R.id.button_request_project)
     Button buttonRequestProject;
 

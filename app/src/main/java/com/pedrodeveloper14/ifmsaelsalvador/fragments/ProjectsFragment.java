@@ -14,10 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.pedrodeveloper14.ifmsaelsalvador.R;
+import com.pedrodeveloper14.ifmsaelsalvador.activities.ProjectViewActivity;
 import com.pedrodeveloper14.ifmsaelsalvador.activities.SplashActivity;
 import com.pedrodeveloper14.ifmsaelsalvador.adapters.ProjectsAdapter;
 import com.pedrodeveloper14.ifmsaelsalvador.database.models.Project;
 import com.pedrodeveloper14.ifmsaelsalvador.database.viewmodel.ViewModel;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +34,7 @@ public class ProjectsFragment extends Fragment {
     private ProjectsAdapter adapter;
     private Context context;
     private ViewModel viewModel;
+    private Project project;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,7 +65,12 @@ public class ProjectsFragment extends Fragment {
         adapter = new ProjectsAdapter() {
             @Override
             public void onCardViewClick(Project project) {
-                startActivity(project);
+                ProjectsFragment.this.project=project;
+                viewModel
+                        .getCommitteeByName(project.getCommittee())
+                        .observe(ProjectsFragment.this, committee -> {
+                            ProjectsFragment.this.startActivity(ProjectsFragment.this.project, committee.getImageUrl());
+                        });
             }
 
             @Override
@@ -82,8 +91,14 @@ public class ProjectsFragment extends Fragment {
      *
      * @param project project to be show in the activity
      */
-    private void startActivity(Project project) {
-        Intent intent = new Intent(context, SplashActivity.class);
+    private void startActivity(Project project, String committeeUrl) {
+        Intent intent = new Intent(context, ProjectViewActivity.class);
+        intent.putExtra("name", project.getName());
+        intent.putExtra("date", project.getDate());
+        intent.putExtra("hour", project.getHour());
+        intent.putExtra("description", project.getDescription());
+        intent.putExtra("committee", committeeUrl);
+        intent.putStringArrayListExtra("photos", new ArrayList<>(project.getPhotos()));
         startActivity(intent);
     }
 }

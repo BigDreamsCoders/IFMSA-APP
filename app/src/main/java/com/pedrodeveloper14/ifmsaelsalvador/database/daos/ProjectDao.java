@@ -6,6 +6,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
+import com.pedrodeveloper14.ifmsaelsalvador.database.models.Committee;
 import com.pedrodeveloper14.ifmsaelsalvador.database.models.Project;
 
 import java.util.List;
@@ -51,6 +52,14 @@ public interface ProjectDao {
      */
     @Query("SELECT*FROM Project WHERE took_part=1")
     LiveData<List<Project>> getCurrentUserProjects();
+
+    /**
+     * Method that return a project by id
+     * @param id id to be search
+     * @return project that has the given id
+     */
+    @Query("SELECT*FROM Project WHERE id=:id")
+    LiveData<Project> getProjectByID(String id);
 
     /**
      * Method to delete the project table

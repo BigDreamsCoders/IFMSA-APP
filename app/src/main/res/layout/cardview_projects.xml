@@ -7,13 +7,12 @@
     <RelativeLayout
         android:id="@+id/card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/_8dp">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/image_view_project_photo_cardview"
             android:layout_width="match_parent"
-            android:layout_height="155dp"
+            android:layout_height="@dimen/_150dp"
             android:contentDescription="@string/committee_photo_description"
             android:src="@color/indigo_200" />
 
@@ -46,8 +45,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="16dp"
-                android:textSize="14sp" />
+                android:layout_marginLeft="@dimen/_16dp"
+                android:layout_marginStart="@dimen/_16dp"
+                android:textSize="@dimen/_14sp" />
 
         </LinearLayout>
 
@@ -72,7 +72,7 @@
                     android:layout_marginLeft="@dimen/_16dp"
                     android:layout_marginStart="@dimen/_16dp"
                     android:text="@string/date_placeholder"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/_14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -86,7 +86,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="@dimen/_0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
 
@@ -97,7 +97,7 @@
                     android:layout_marginLeft="@dimen/_16dp"
                     android:layout_marginStart="@dimen/_16dp"
                     android:text="@string/hour_placeholder"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/_14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -107,7 +107,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="@dimen/_8dp"
                     android:layout_marginStart="@dimen/_8dp"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/_14sp" />
             </LinearLayout>
         </LinearLayout>
 

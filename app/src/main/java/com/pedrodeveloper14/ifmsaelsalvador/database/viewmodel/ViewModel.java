@@ -78,6 +78,10 @@ public class ViewModel extends AndroidViewModel {
         return repository.getCurrentUserProjects();
     }
 
+    public LiveData<Project> getProjectByID(String id){
+        return repository.getProjectByID(id);
+    }
+
     public void deleteProjectTable() {
         new DeleteProjectTable(repository).execute();
     }
@@ -120,6 +124,10 @@ public class ViewModel extends AndroidViewModel {
 
     public LiveData<List<Committee>> getAllCommittees() {
         return repository.getAllCommittees();
+    }
+
+    public LiveData<Committee> getCommitteeByName(String name){
+        return repository.getCommitteeByName(name);
     }
 
     public void deleteCommitteeTable() {

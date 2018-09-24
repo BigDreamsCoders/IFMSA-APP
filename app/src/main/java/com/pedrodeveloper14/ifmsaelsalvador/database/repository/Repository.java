@@ -44,6 +44,10 @@ public class Repository {
         return mProjectDao.getProjectsByCommittee(committee);
     }
 
+    public LiveData<Project> getProjectByID(String id){
+        return mProjectDao.getProjectByID(id);
+    }
+
     public LiveData<List<Project>> getCurrentUserProjects() {
         return mProjectDao.getCurrentUserProjects();
     }
@@ -60,6 +64,10 @@ public class Repository {
 
     public LiveData<List<Committee>> getAllCommittees() {
         return mCommitteeDao.getAllCommittees();
+    }
+
+    public LiveData<Committee> getCommitteeByName(String name){
+        return mCommitteeDao.getCommitteeByName(name);
     }
 
     public void deleteCommittees() {
